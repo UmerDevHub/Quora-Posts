@@ -1,0 +1,505 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* Main heading styling */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Heading underline animation */
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 4px;
+    background: #3498db;
+    transition: width 0.5s ease;
+}
+
+h1:hover::after {
+    width: 100px;
+}
+
+/* Post container styling */
+.post {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+    max-width: 800px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Post hover effect */
+.post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(31, 38, 135, 0.25);
+}
+
+/* Username styling */
+.user {
+    color: #2c3e50;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    position: relative;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+/* Username hover animation */
+.user::before {
+    content: '@';
+    color: #3498db;
+    font-weight: bold;
+    margin-right: 5px;
+    transition: transform 0.3s ease;
+}
+
+.user:hover {
+    color: #3498db;
+}
+
+.user:hover::before {
+    transform: scale(1.2);
+}
+
+/* Content styling */
+.content {
+    color: #34495e;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    position: relative;
+    padding-left: 20px;
+    border-left: 4px solid #3498db;
+    transition: all 0.3s ease;
+}
+
+/* Content hover effect */
+.post:hover .content {
+    border-left-color: #e74c3c;
+    transform: translateX(10px);
+}
+
+/* Content animation for appearing */
+.post {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Delay animation for each post */
+.post:nth-child(1) { animation-delay: 0.1s; }
+.post:nth-child(2) { animation-delay: 0.2s; }
+.post:nth-child(3) { animation-delay: 0.3s; }
+.post:nth-child(4) { animation-delay: 0.4s; }
+.post:nth-child(5) { animation-delay: 0.5s; }
+
+/* Post pseudo-element for decorative line */
+.post::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #3498db, #e74c3c);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.post:hover::before {
+    transform: scaleX(1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .post {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .user {
+        font-size: 1.1rem;
+    }
+
+    .content {
+        font-size: 1rem;
+        padding-left: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .post {
+        margin: 0.5rem;
+        padding: 0.8rem;
+    }
+
+    .user {
+        font-size: 1rem;
+    }
+
+    .content {
+        font-size: 0.9rem;
+        padding-left: 10px;
+        border-left-width: 3px;
+    }
+}
+
+/* High-resolution displays */
+@media (min-resolution: 2dppx) {
+    .post {
+        box-shadow: 0 10px 35px rgba(31, 38, 135, 0.2);
+    }
+}
+
+/* Accessibility enhancements */
+@media (prefers-reduced-motion: reduce) {
+    .post, .user, .content, h1::after, .post::before {
+        transition: none;
+        animation: none;
+    }
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3498db;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #e74c3c;
+}
+
+/* Create Post Link Styling */
+.create-post-link {
+    display: inline-block;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.create-post-link:hover {
+    background: #2980b9;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.5);
+}
+
+.create-post-link:active {
+    background: #1c6ea4;
+    transform: scale(0.98);
+}
+
+/* Center the button */
+.create-post-link {
+    text-align: center;
+    display: block;
+    margin: 20px auto;
+    width: fit-content;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .create-post-link {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+}
+/* See in Detail Link Styling */
+.post a {
+    display: inline-block;
+    margin-top: 12px;
+    color: #2980b9;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s ease, border-color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.post a:hover {
+    color: #1c5980;
+    border-bottom: 2px solid #2980b9;
+}
+
+/* Optional: add a small arrow after text */
+.post a::after {
+    content: ' →';
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    display: inline-block;
+    margin-left: 4px;
+}
+
+.post a:hover::after {
+    transform: translateX(4px);
+}
+/* Container for detail page */
+.post-detail-container {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 30px 25px;
+    background: #ffffffdd;
+    border-radius: 15px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, sans-serif;
+}
+
+/* Heading */
+.detail-heading {
+    text-align: center;
+    font-size: 2.4rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+/* Post ID */
+.post-id {
+    font-size: 1rem;
+    color: #666;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.post-id span {
+    font-weight: 600;
+    color: #3498db;
+}
+
+/* Card containing post details */
+.post-detail-card {
+    background: #f8f9fa;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(31, 38, 135, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.post-detail-card:hover {
+    box-shadow: 0 12px 30px rgba(31, 38, 135, 0.2);
+}
+
+/* Username styling */
+.detail-username {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2980b9;
+    margin-bottom: 12px;
+}
+
+/* Content styling */
+.detail-content {
+    font-size: 1.2rem;
+    color: #34495e;
+    line-height: 1.7;
+    white-space: pre-wrap;
+}
+
+/* Back link styling */
+.back-link {
+    display: inline-block;
+    margin-top: 30px;
+    text-decoration: none;
+    color: #3498db;
+    font-weight: 600;
+    font-size: 1rem;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.back-link:hover {
+    color: #1c5980;
+    border-bottom: 2px solid #3498db;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .post-detail-container {
+        margin: 30px 15px;
+        padding: 20px 15px;
+    }
+
+    .detail-heading {
+        font-size: 1.8rem;
+    }
+
+    .detail-username {
+        font-size: 1.3rem;
+    }
+
+    .detail-content {
+        font-size: 1rem;
+    }
+
+    .back-link {
+        font-size: 0.9rem;
+    }
+}
+
+
+/* Delete button styling */
+.delete-button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+}
+
+.delete-button:hover {
+    background-color: #c0392b;
+    transform: scale(1.05);
+}
+
+.delete-button:active {
+    transform: scale(0.95);
+}
+
+/* Edit form container */
+.edit-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* Heading */
+.edit-heading {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* Post information text */
+.post-info {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Form label */
+.form-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-align: left;
+    color: #2c3e50;
+}
+
+/* Textarea styling */
+.edit-textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    resize: vertical;
+    min-height: 100px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+/* Update button styling */
+.update-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.update-button:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+.update-button:active {
+    transform: scale(0.95);
+}
+
+/* Back link */
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}

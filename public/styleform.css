@@ -1,0 +1,642 @@
+/* Reset default styles for consistency */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Body styling to match posts page */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(145deg, #eceff1 0%, #b0bec5 100%);
+    min-height: 100vh;
+    padding: 30px;
+    line-height: 1.7;
+    color: #263238;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* Form container styling (card-like) */
+.post-form {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 245, 245, 0.9) 100%);
+    border-radius: 20px;
+    padding: 2.5rem;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Form hover effect */
+.post-form:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Form decorative top border */
+.post-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(to right, #3f51b5, #f50057, #00bcd4);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Form hover border animation */
+.post-form:hover::before {
+    transform: scaleX(1);
+}
+
+/* Form corner accent */
+.post-form::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    background: radial-gradient(circle, #f50057 0%, transparent 70%);
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.post-form:hover::after {
+    opacity: 0.7;
+}
+
+/* Form title styling */
+.form-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1a237e;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Form title decorative underline */
+.form-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 4px;
+    background: linear-gradient(to right, #3f51b5, #f50057);
+    transition: width 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.post-form:hover .form-title::after {
+    width: 120px;
+}
+
+/* Form title hover effect */
+.form-title:hover {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Input field styling */
+.form-input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    border: 2px solid #b0bec5;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    color: #37474f;
+    transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+    margin-bottom: 1.5rem;
+}
+
+/* Input field focus and hover effects */
+.form-input:focus,
+.form-input:hover {
+    border-color: #3f51b5;
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Input placeholder styling */
+.form-input::placeholder {
+    color: #78909c;
+    font-style: italic;
+    transition: color 0.3s ease;
+}
+
+.form-input:focus::placeholder {
+    color: #b0bec5;
+}
+
+/* Textarea styling */
+.form-textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 1rem;
+    font-size: 1.1rem;
+    border: 2px solid #b0bec5;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    color: #37474f;
+    resize: vertical;
+    transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+    margin-bottom: 1.5rem;
+}
+
+/* Textarea focus and hover effects */
+.form-textarea:focus,
+.form-textarea:hover {
+    border-color: #3f51b5;
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Textarea placeholder styling */
+.form-textarea::placeholder {
+    color: #78909c;
+    font-style: italic;
+    transition: color 0.3s ease;
+}
+
+.form-textarea:focus::placeholder {
+    color: #b0bec5;
+}
+
+/* Button styling */
+.form-button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(to right, #3f51b5, #f50057);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Button hover effect */
+.form-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(to right, #f50057, #00bcd4);
+}
+
+/* Button active effect */
+.form-button:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Button ripple effect */
+.form-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.form-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Form animation for appearing */
+.post-form {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: formSlideIn 0.6s ease forwards;
+}
+
+/* Form slide-in animation */
+@keyframes formSlideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Custom scrollbar for textarea */
+.form-textarea::-webkit-scrollbar {
+    width: 8px;
+}
+
+.form-textarea::-webkit-scrollbar-track {
+    background: #eceff1;
+    border-radius: 10px;
+}
+
+.form-textarea::-webkit-scrollbar-thumb {
+    background: #3f51b5;
+    border-radius: 10px;
+}
+
+.form-textarea::-webkit-scrollbar-thumb:hover {
+    background: #f50057;
+}
+
+/* Form focus states for accessibility */
+.post-form:focus-within {
+    outline: 3px solid #3f51b5;
+    outline-offset: 5px;
+}
+
+/* Input and textarea selection styling */
+.form-input::selection,
+.form-textarea::selection {
+    background: #3f51b5;
+    color: #fff;
+}
+
+/* Form input and textarea word-break */
+.form-input,
+.form-textarea {
+    word-break: break-word;
+    hyphens: auto;
+}
+
+/* Form button text shadow */
+.form-button:hover {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive design for tablets */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    .post-form {
+        padding: 1.8rem;
+        max-width: 500px;
+    }
+
+    .form-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .form-input,
+    .form-textarea {
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+
+    .form-button {
+        font-size: 1.1rem;
+        padding: 0.8rem;
+    }
+
+    .form-title::after {
+        height: 3px;
+    }
+
+    .post-form::before {
+        height: 5px;
+    }
+}
+
+/* Responsive design for small mobile devices */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .post-form {
+        padding: 1.2rem;
+        border-radius: 15px;
+    }
+
+    .form-title {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        letter-spacing: 1.5px;
+    }
+
+    .form-input,
+    .form-textarea {
+        font-size: 0.95rem;
+        padding: 0.7rem;
+        border-width: 1px;
+    }
+
+    .form-button {
+        font-size: 1rem;
+        padding: 0.7rem;
+    }
+
+    .form-title::after {
+        height: 2px;
+        width: 80px;
+    }
+
+    .post-form::before {
+        height: 4px;
+    }
+}
+
+/* Ultra-wide screens */
+@media (min-width: 1200px) {
+    .post-form {
+        max-width: 700px;
+        padding: 3rem;
+    }
+
+    .form-title {
+        font-size: 2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .form-input,
+    .form-textarea {
+        font-size: 1.2rem;
+        padding: 1.2rem;
+    }
+
+    .form-button {
+        font-size: 1.3rem;
+        padding: 1.2rem;
+    }
+}
+
+/* High-resolution displays */
+@media (min-resolution: 2dppx) {
+    .post-form {
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2), 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .post-form:hover {
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25), 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+}
+
+/* Accessibility: Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .post-form,
+    .form-title::after,
+    .post-form::before,
+    .post-form::after,
+    .form-input,
+    .form-textarea,
+    .form-button,
+    .form-button::before {
+        transition: none;
+        animation: none;
+    }
+}
+
+/* Accessibility: High contrast mode */
+@media (prefers-contrast: high) {
+    body {
+        background: #fff;
+    }
+
+    .post-form {
+        background: #fff;
+        border: 2px solid #000;
+    }
+
+    .form-title {
+        color: #000;
+    }
+
+    .form-input,
+    .form-textarea {
+        border: 2px solid #000;
+        background: #fff;
+        color: #000;
+    }
+
+    .form-button {
+        background: #000;
+        color: #fff;
+    }
+
+    .form-title::after,
+    .post-form::before {
+        background: #000;
+    }
+}
+
+/* Accessibility: Dark mode preference */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(145deg, #263238 0%, #455a64 100%);
+        color: #eceff1;
+    }
+
+    .post-form {
+        background: linear-gradient(135deg, rgba(55, 71, 79, 0.95) 0%, rgba(69, 90, 100, 0.9) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-title {
+        color: #eceff1;
+    }
+
+    .form-input,
+    .form-textarea {
+        background: rgba(55, 71, 79, 0.5);
+        color: #b0bec5;
+        border-color: #78909c;
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+        color: #90a4ae;
+    }
+
+    .form-button {
+        background: linear-gradient(to right, #90caf9, #f06292);
+    }
+
+    .form-button:hover {
+        background: linear-gradient(to right, #f06292, #4dd0e1);
+    }
+
+    .form-title::after {
+        background: linear-gradient(to right, #90caf9, #f06292);
+    }
+
+    .post-form::before {
+        background: linear-gradient(to right, #90caf9, #f06292, #4dd0e1);
+    }
+
+    .form-textarea::-webkit-scrollbar-track {
+        background: #37474f;
+    }
+
+    .form-textarea::-webkit-scrollbar-thumb {
+        background: #90caf9;
+    }
+
+    .form-textarea::-webkit-scrollbar-thumb:hover {
+        background: #f06292;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: #fff;
+        padding: 0;
+    }
+
+    .post-form {
+        background: #fff;
+        box-shadow: none;
+        border: 1px solid #000;
+        padding: 1rem;
+    }
+
+    .form-title {
+        font-size: 1.5rem;
+        color: #000;
+        margin-bottom: 1rem;
+    }
+
+    .form-input,
+    .form-textarea {
+        border: 1px solid #000;
+        background: #fff;
+        color: #000;
+        font-size: 1rem;
+    }
+
+    .form-button {
+        background: #000;
+        color: #fff;
+        font-size: 1rem;
+    }
+
+    .post-form::before,
+    .post-form::after,
+    .form-title::after,
+    .form-button::before {
+        display: none;
+    }
+}
+
+/* Custom cursor effects */
+.form-button:hover,
+.form-input:hover,
+.form-textarea:hover {
+    cursor: pointer;
+}
+
+/* Animation for form elements */
+.form-input,
+.form-textarea,
+.form-button {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: elementSlideIn 0.5s ease forwards;
+}
+
+.form-input {
+    animation-delay: 0.1s;
+}
+
+.form-textarea {
+    animation-delay: 0.2s;
+}
+
+.form-button {
+    animation-delay: 0.3s;
+}
+
+/* Element slide-in animation */
+@keyframes elementSlideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Form button text alignment */
+.form-button {
+    text-align: center;
+}
+
+/* Form input and textarea first-letter styling */
+.form-input::first-letter,
+.form-textarea::first-letter {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #3f51b5;
+}
+
+/* Form input and textarea focus outline */
+.form-input:focus,
+.form-textarea:focus {
+    outline: 2px solid #3f51b5;
+    outline-offset: 2px;
+}
+
+/* Form button focus outline */
+.form-button:focus {
+    outline: 2px solid #3f51b5;
+    outline-offset: 2px;
+}
+
+/* Form input and textarea transition properties */
+.form-input,
+.form-textarea {
+    transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Form button transition properties */
+.form-button {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Form title transition */
+.form-title {
+    transition: text-shadow 0.3s ease;
+}
+
+/* Form decorative border transition */
+.post-form::before {
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Form corner accent transition */
+.post-form::after {
+    transition: opacity 0.3s ease;
+}
+
+/* Form title underline transition */
+.form-title::after {
+    transition: width 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* End of stylesheet */

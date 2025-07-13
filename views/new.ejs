@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Create New Post</title>
+    <link rel="stylesheet" href="/styleform.css" />
+</head>
+<body>
+    <form method="post" action="/posts" class="post-form">
+        <h1 class="form-title">Share Your Thoughts</h1>
+        <input
+            class="form-input"
+            type="text"
+            name="username"
+            placeholder="Your username"
+            required
+            autocomplete="off"
+        />
+        <textarea
+            class="form-textarea"
+            name="content"
+            placeholder="Write your post here..."
+            rows="6"
+            required
+        ></textarea>
+        <button class="form-button" type="submit">Publish Post</button>
+    </form>
+</body>
+</html>
